@@ -176,6 +176,73 @@ End Selectionsort
 
         #endregion
 
+        #region HeapSort
+        /*Description: a comparison-based sort-in-place algorithm that takes no extra storage.
+         * It is often described as an improved selection sort.
+         * Best Case: O(n log n)
+         * Worst Case: 0(n log n)
+         * Puesdocode:
+         * Heapsort(Data: values)
+    <Turn the array into a heap.>
+ 
+    For i = <length of values> - 1 To 0 Step -1
+        // Swap the root item and the last item.
+        Data: temp = values[0]
+        values[0] = values[i]
+        values[i] = temp
+ 
+        <Consider the item in position i to be removed from the heap,
+         so the heap now holds i - 1 items. Push the new root value
+         down into the heap to restore the heap property.>
+    Next i
+End Heapsort  
+         */
+
+        static int[] Heapsort(int[] array)
+        {
+            SetTimer();
+            int n = array.Length;
+            for (int i = n / 2 - 1; i >= 0; i--)
+                addToHeap(array, n, i);
+
+            for (int i = n - 1; i > 0; i--)
+            {
+                int temp = array[0];
+                array[0] = array[i];
+                array[i] = temp;
+
+                addToHeap(array, i, 0);
+            }
+            //foreach (int i in array) { Console.Write(i + " ");  }
+            aTimer.Stop();
+            return array;
+        }
+
+        private static void addToHeap(int[] array, int n, int i)
+        {
+            throw new NotImplementedException();
+        }
+
+        #endregion
+
+        #region QuickSort
+        /*Description:  is a  comparison-based sort-in-place divide-and-conquer strategy.
+         * Best Case: O(n log n)
+         * Worst Case: O(n^2)
+         * Puesdocode:
+         * algorithm quicksort(A, lo, hi) is
+    if lo < hi then
+        p := pivot(A, lo, hi)
+        left, right := partition(A, p, lo, hi)  // note: multiple return values
+        quicksort(A, lo, left - 1)
+        quicksort(A, right + 1, hi)
+         */
+
+
+
+
+
+        #endregion
     }
 
 
