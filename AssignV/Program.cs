@@ -239,10 +239,151 @@ End Heapsort
          */
 
 
+        static int[] Quicksort(int[] array, int leftIndex, int rightIndex)
+        {
+            SetTimer();
+            var m = leftIndex;
+            var f = rightIndex;
+            var pivot = array[leftIndex];
+            while (m <= f)
+            {
+                while (array[m] < pivot)
+                {
+                    m++;
+                }
+
+                while (array[f] > pivot)
+                {
+                    f--;
+                }
+                if (m <= f)
+                {
+                    int temp = array[m];
+                    array[m] = array[f];
+                    array[f] = temp;
+                    m++;
+                    f--;
+                }
+            }
+            if (leftIndex < f)
+                Quicksort(array, leftIndex, f);
+            if (m < rightIndex)
+                Quicksort(array, m, rightIndex);
+            //foreach (int i in array) { Console.Write(i + " ");  }
+            aTimer.Stop();
+            
+            return array;
+        }
+        #endregion
+
+        #region MergeSort
+        /*Description: Instead of picking a dividing item and splitting the items into two groups holding items that are larger and smaller than the dividing item, 
+         * mergesort splits the items into two halves holding an equal number of items. 
+         * It then recursively calls itself to sort the two halves.
+         * Best Case: O(n log n)
+         * Worst Case: Oo(n log n)
+         * Puesdocode:
+         * Mergesort(Data: values[], Data: scratch[], Integer: start, Integer: end)
+    // If the array contains only one item, it is already sorted.
+
+If (start == end) Then Return
+ 
+    // Break the array into left and right halves.
+    Integer: midpoint = (start + end) / 2
+ 
+    // Call Mergesort to sort the two halves.
+    Mergesort(values, scratch, start, midpoint)
+    Mergesort(values, scratch, midpoint + 1, end)
+ 
+    // Merge the two sorted halves.
+    Integer: left_index = start
+    Integer: right_index = midpoint + 1
+    Integer: scratch_index = left_index
+    While ((left_index <= midpoint) And (right_index <= end))
+        If (values[left_index] <= values[right_index]) Then
+            scratch[scratch_index] = values[left_index]
+            left_index = left_index + 1
+        Else
+            scratch[scratch_index] = values[right_index]
+            right_index = right_index + 1
+        End If
+        scratch_index = scratch_index + 1    End While
+ 
+    // Finish copying whichever half is not empty.
+    For i = left_index To midpoint
+        scratch[scratch_index] = values[i]
+        scratch_index = scratch_index + 1
+    Next i
+    For i = right_index To end
+
+scratch[scratch_index] = values[i]
+        scratch_index = scratch_index + 1
+    Next i
+    // Copy the values back into the original values array.
+    For i = start To end
+        values[i] = scratch[i]
+    Next i
+End Mergesort
+         */
+
+        static int[] Mergesort(int[] array, int leftArray, int rightArray)
+        {
+            SetTimer();
+            if (leftArray < rightArray)
+            {
+                int mid = leftArray + (rightArray - leftArray) / 2;
+                Mergesort(array, leftArray, mid);
+                Mergesort(array, mid + 1, rightArray);
+                Merge(array, leftArray, mid, rightArray);
+            }
+            aTimer.Stop();
+            return array;
+        }
+
+         static void Merge(int[] array, int leftArray, int middleArray, int rightArray)
+        {
+            var leftArrayLength = middleArray - leftArray + 1;
+            var rightArrayLength = rightArray - middleArray;
+            var leftTempArray = new int[leftArrayLength];
+            var rightTempArray = new int[rightArrayLength];
+            int p, x;
+            for (p = 0; p < leftArrayLength; ++p)
+                leftTempArray[p] = array[leftArray + p];
+            for (x = 0; x < rightArrayLength; ++x)
+                rightTempArray[x] = array[middleArray + 1 + x];
+            p = 0;
+            x = 0;
+            int g = leftArray;
+            while (p < leftArrayLength && x < rightArrayLength)
+            {
+                if (leftTempArray[p] <= rightTempArray[x])
+                {
+                    array[p++] = leftTempArray[x++];
+                }
+                else
+                {
+                    array[g++] = rightTempArray[x++];
+                }
+            }
+            while (p < leftArrayLength)
+            {
+                array[g++] = leftTempArray[p++];
+            }
+            while (x < rightArrayLength)
+            {
+                array[g++] = rightTempArray[x++];
+            }
+        }
+
+
+
+
+
 
 
 
         #endregion
+
     }
 
 
