@@ -12,7 +12,11 @@ namespace AssignV
         static double[] differentTimes = new double[6];
         public static System.Timers.Timer aTimer;
 
+        // timer was set by using microsoft vs
         public static ElapsedEventHandler OnTimedEvent { get; private set; }
+        // event handler was easier to deal with the timer
+
+
 
         static void Main(string[] args)
         {
@@ -20,10 +24,29 @@ namespace AssignV
             string[] stringScores = File.ReadAllLines(textFilePath);
             int[] scores = Array.ConvertAll(stringScores, int.Parse);
             Bubblesort(scores);
-            
+            WriteLine("Bubble sort algorithm took " + differentTimes[0] + " seconds to sort the array of scores.");
+            Insertionsort(scores);
+            WriteLine("nIsertion sort algorithm took " + differentTimes[1] + " seconds to sort the array of scores.");
+            Selectionsort(scores);
+            WriteLine("Selection sort algorithm took " + differentTimes[2] + " seconds to sort the array of scores.");
+            Heapsort(scores);
+            WriteLine("Heap sort algorithm took " + differentTimes[3] + " seconds to sort the array of scores.");
+            Quicksort(scores, 0, scores.Length - 1);
+            WriteLine("Quick sort algorithm took " + differentTimes[4] + " seconds to sort the array of scores.");
+            Mergesort(scores, 0, scores.Length - 1);
+            WriteLine("Merge sort algorithm took " + differentTimes[5] + " seconds to sort the array of scores.");
 
-            
+            string fastestThing = ThingieFast();
+            Console.WriteLine("In the end,we see that the " + fastestThing + " was the fastest algorithm.");
+
+
         }
+
+        private static string Thingie()
+        {
+            throw new NotImplementedException();
+        }
+
         public static void SetTimer()
         {
             // Create a timer with a two second interval.
@@ -86,7 +109,7 @@ End Bubblesort
             }
             
             aTimer.Stop();
-            
+            aTimer.Elapsed += OnTimedEvent;
             return array;
         }
 
@@ -170,6 +193,7 @@ End Selectionsort
             }
 
             aTimer.Stop();
+            aTimer.Elapsed += OnTimedEvent;
             return array;
 
         }
@@ -213,8 +237,9 @@ End Heapsort
 
                 addToHeap(array, i, 0);
             }
-            //foreach (int i in array) { Console.Write(i + " ");  }
+            
             aTimer.Stop();
+            aTimer.Elapsed += OnTimedEvent;
             return array;
         }
 
@@ -269,9 +294,9 @@ End Heapsort
                 Quicksort(array, leftIndex, f);
             if (m < rightIndex)
                 Quicksort(array, m, rightIndex);
-            //foreach (int i in array) { Console.Write(i + " ");  }
-            aTimer.Stop();
             
+            aTimer.Stop();
+            aTimer.Elapsed += OnTimedEvent;
             return array;
         }
         #endregion
@@ -337,6 +362,7 @@ End Mergesort
                 Merge(array, leftArray, mid, rightArray);
             }
             aTimer.Stop();
+            aTimer.Elapsed += OnTimedEvent;
             return array;
         }
 
@@ -376,17 +402,50 @@ End Mergesort
         }
 
 
-
-
-
-
-
-
         #endregion
 
+        static string ThingieFast()
+        {
+            string fastestThing= " ";
+            int[] diffTimes = Quicksort(Array.ConvertAll(differentTimes, Convert.ToInt32), 0,differentTimes.Length - 1);
+            foreach (double l in differentTimes)
+            {
+                if (l == differentTimes[0])
+                    fastestThing = Array.IndexOf(differentTimes, l).ToString();
+            }
+            if (fastestThing == 0.ToString())
+            {
+                fastestThing = "bubble sort";
+            }
+            else if (fastestThing == 1.ToString())
+            {
+                fastestThing = "insertion sort";
+            }
+            else if (fastestThing == 2.ToString())
+            {
+                fastestThing = "selection sort";
+            }
+            else if (fastestThing == 3.ToString())
+            {
+                fastestThing = "heap sort";
+            }
+            else if (fastestThing == 4.ToString())
+            {
+                fastestThing = "quick sort";
+            }
+            else if (fastestThing == 5.ToString())
+            {
+                fastestThing = "merge sort";
+            }
+            return fastestThing;
+        }
     }
 
 
-
-
 }
+
+
+
+
+
+
