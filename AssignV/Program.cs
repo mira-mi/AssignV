@@ -16,6 +16,7 @@ namespace AssignV
         public static ElapsedEventHandler OnTimedEvent { get; private set; }
         // event handler was easier to deal with the timer
 
+        //used regions because it was so much code going on in here and it was easier
 
 
         static void Main(string[] args)
@@ -440,6 +441,19 @@ End Mergesort
             return fastestThing;
         }
     }
+
+    /*So, in the end bubble sort was the fourth slowest because, it was busy swapping elements. It had a lot to go
+     * through to each number
+     * Insertion sort was the third slowest because it goes through everything one at a time and that 
+     * is very time consuming
+     * Selection sort was indeed the slowest because the list was quite large and it took a long to sort 
+     * through it.
+     * Heap sort was the second slowest because though it is described as a better version of the selection sort
+     * it is very time consuming when it comes to sorting through the data. It is large and though doesn't hold much
+     * storage, it does still go through each one slowly.
+     * Merge Sort was the fastest on my end becuase of the divide and conquer strategy it has an easier way to go through
+     * each number in the data set. So, this one went faster than all of the other ones.
+     */
 
 
 }
