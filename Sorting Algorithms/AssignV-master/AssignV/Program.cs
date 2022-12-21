@@ -24,22 +24,7 @@ namespace AssignV
             string textFilePath = "score.txt";
             string[] stringScores = File.ReadAllLines(textFilePath);
             int[] scores = Array.ConvertAll(stringScores, int.Parse);
-            Bubblesort(scores);
-            WriteLine("Bubble sort algorithm took " + differentTimes[0] + " seconds to sort the array of scores.");
-            Insertionsort(scores);
-            WriteLine("nIsertion sort algorithm took " + differentTimes[1] + " seconds to sort the array of scores.");
-            Selectionsort(scores);
-            WriteLine("Selection sort algorithm took " + differentTimes[2] + " seconds to sort the array of scores.");
-            Heapsort(scores);
-            WriteLine("Heap sort algorithm took " + differentTimes[3] + " seconds to sort the array of scores.");
-            Quicksort(scores, 0, scores.Length - 1);
-            WriteLine("Quick sort algorithm took " + differentTimes[4] + " seconds to sort the array of scores.");
-            Mergesort(scores, 0, scores.Length - 1);
-            WriteLine("Merge sort algorithm took " + differentTimes[5] + " seconds to sort the array of scores.");
-
-            
-            
-
+ 
 
         }
 
