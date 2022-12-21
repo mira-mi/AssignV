@@ -28,10 +28,6 @@ namespace AssignV
 
         }
 
-        private static string Thingie()
-        {
-            throw new NotImplementedException();
-        }
 
         public static void SetTimer()
         {
