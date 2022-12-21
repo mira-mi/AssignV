@@ -2,9 +2,6 @@
 
 This folder consists of six different algorithms that all do the same thing, they all sort data
 
-## Quick Read
-- the folder that says Sorting Algorithms is te correct folder to look at the code I apologize if that is confusing
-
 ## In this folder, there is:
 
  - Bubble Sort: starts at the beginning of an array and swaps the first two elements if the first is greater than the second. Moving to the next pair, the same comparison is made.
