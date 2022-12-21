@@ -96,13 +96,13 @@ End Bubblesort
             while (notSorted)
             {
                 notSorted = false;
-                for (int i = 0; i < array.Length - 1; i++)
+                for (int o = 0; o < array.Length - 1; o++)
                 {
-                    if (array[i] > array[i + 1])
+                    if (array[o] > array[o + 1])
                     {
-                        var temp = array[i];
-                        array[i] = array[i + 1];
-                        array[i + 1] = temp;
+                        var temp = array[o];
+                        array[o] = array[o + 1];
+                        array[0 + 1] = temp;
 
                         notSorted = true;
                     }
@@ -113,7 +113,7 @@ End Bubblesort
             aTimer.Elapsed += OnTimedEvent;
             return array;
         }
-
+        // chose o because i is basic to me
         #endregion
 
         #region InsertionSort
@@ -135,15 +135,15 @@ End Insertionsort
         static int[] Insertionsort(int[] array)
         {
             SetTimer();
-            for (int i = 0; i < array.Length - 1; i++)
+            for (int p = 0; p < array.Length - 1; p++)
             {
-                for (int j = i + 1; j > 0; j--)
+                for (int t = p + 1; t > 0; t--)
                 {
-                    if (array[j] < array[j - 1])
+                    if (array[t] < array[t - 1])
                     {
-                        var temp = array[j - 1];
-                        array[j] = array[j - 1];
-                        array[j - 1] = temp;
+                        var temp = array[t - 1];
+                        array[t] = array[t - 1];
+                        array[t - 1] = temp;
                     }
                     else
                     {
@@ -178,19 +178,19 @@ End Selectionsort
         {
             SetTimer();
             int temp, smallest;
-            for (int i = 0; i < array.Length - 1; i++)
+            for (int r = 0; r < array.Length - 1; r++)
             {
-                smallest = i;
-                for (int j = i + 1; j < array.Length; j++)
+                smallest = r;
+                for (int b = r + 1; b < array.Length; b++)
                 {
-                    if (array[j] < array[smallest])
+                    if (array[b] < array[smallest])
                     {
-                        smallest = j;
+                        smallest = b;
                     }
                 }
                 temp = array[smallest];
-                array[smallest] = array[i];
-                array[i] = temp;
+                array[smallest] = array[r];
+                array[r] = temp;
             }
 
             aTimer.Stop();
@@ -227,8 +227,8 @@ End Heapsort
         {
             SetTimer();
             int n = array.Length;
-            for (int i = n / 2 - 1; i >= 0; i--)
-                addToHeap(array, n, i);
+            for (int c = n / 2 - 1; c >= 0; c--)
+                addToHeap(array, n, c);
 
             for (int i = n - 1; i > 0; i--)
             {
