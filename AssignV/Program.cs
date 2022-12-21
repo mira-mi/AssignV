@@ -439,6 +439,7 @@ End Mergesort
                 fastestThing = "merge sort";
             }
             return fastestThing;
+            // returns the fastest algorithm
         }
     }
 
